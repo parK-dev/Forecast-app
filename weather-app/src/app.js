@@ -21,7 +21,10 @@ app.set('views', viewsPath);
 hbs.registerPartials(partialsPath);
 
 // Setup static directory to serve
-app.use(express.static(publicDirectoryPath)); //set HTML files for routes
+app.use(express.static(publicDirectoryPath)); //set HTML path for static pages.
+
+
+// Route handlers
 
 app.get('', (req, res) => {
   res.render('index', {
@@ -29,9 +32,14 @@ app.get('', (req, res) => {
     author: 'parK-dev'
   });
 });
+
+app.get('*', (req, res) => {
+  res.send('My 404 page');
+});
+
 app.listen(3000, () => {
   
-}); // set port
+});
 
 const address = process.argv[2];
 
