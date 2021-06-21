@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
-import geocode from './utils/geocode.js';
-import forecast from './utils/forecast.js';
+import geocode from '../utils/geocode.js';
+import forecast from '../utils/forecast.js';
 
 const address = process.argv[2];
 if(!address) {
