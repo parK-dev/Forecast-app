@@ -9,6 +9,7 @@ import hbs from 'hbs';
 
 const app = express();
 const __dirname = dirname(fileURLToPath(import.meta.url));
+const port = process.env.PORT || 3000;
 
 // Bootstrap
 app.use('/css', express.static(path.join(__dirname, 'node_modules/bootstrap/dist/css')))
@@ -63,6 +64,6 @@ app.get('*', (req, res) => {
   res.send('My 404 page');
 });
 
-app.listen(3000, () => {
+app.listen(port, () => {
   
 });
