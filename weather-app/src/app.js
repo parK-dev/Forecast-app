@@ -8,9 +8,14 @@ import { fileURLToPath } from 'url';
 import hbs from 'hbs';
 
 const app = express();
+const __dirname = dirname(fileURLToPath(import.meta.url));
+
+// Bootstrap
+app.use('/css', express.static(path.join(__dirname, 'node_modules/bootstrap/dist/css')))
+app.use('/js', express.static(path.join(__dirname, 'node_modules/bootstrap/dist/js')))
+app.use('/js', express.static(path.join(__dirname, 'node_modules/jquery/dist')))
 
 //Define paths for Express config
-const __dirname = dirname(fileURLToPath(import.meta.url));
 const publicDirectoryPath = path.join(__dirname, '../public');
 const viewsPath = path.join(__dirname,'../templates/views');
 const partialsPath = path.join(__dirname, '../templates/partials');
