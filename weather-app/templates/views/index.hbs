@@ -15,12 +15,15 @@
     <div class="container">
       <div class="row align-items-center" style="min-height: calc(100vh - 66px);">
         <div class="col-lg-6 mx-auto">
-          <h1 class="text-center">How's the Weather?</h1>
+          <h1 class="text-center">How's the Weather in...</h1>
           <div class="input-group">
-              <input type="text" class="form-control" placeholder="City...">
+              <input type="search" class="form-control mb-32" placeholder="City...">
+              <button class="btn btn-light ml-2">Search</button>
           </div>
+          {{>card}}
         </div>
       </div>
     </div>
+    <script src="/js/getWeather.js"></script>
   </body>
 </html>

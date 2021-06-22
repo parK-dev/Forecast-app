@@ -9,8 +9,8 @@ body {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  font-family: "Gill Sans Extrabold", cursive,  sans-serif;
 }
-
 
 #content {
   padding: 25% 25% 5%;  
@@ -26,4 +26,15 @@ body {
 
 #search {
   border: 1px;
+}
+
+.hidden {
+  opacity: 0%;
+}
+
+#card {
+  overflow: hidden;
+  opacity: 0%;
+  transition: all 0.4s ease-in-out;
+  background-color: rgba(98,167,198, 0.6) !important;
 }

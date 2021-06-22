@@ -32,9 +32,30 @@ app.use(express.static(publicDirectoryPath)); //set HTML path for static pages.
 // Route handlers
 
 app.get('', (req, res) => {
-  res.render('index', {
-    title: 'A Weather App',
-    author: 'parK-dev'
+  res.render('index');
+});
+
+app.get('/weather', (req, res) => {
+  if (!req.query.address) {
+    return res.send({
+      error: 'You must provide an address!'
+    });
+  }
+  geocode(req.query.address, (error, { latitude, longitude, location } = {}) => {
+    if (error) {
+      return res.send({ error });
+    }
+
+    forecast(latitude, longitude, (error, forecastData) => {
+      if (error) {
+        return res.send({ error });
+      }
+      res.send({
+        forecast: forecastData,
+        location,
+        address: req.query.address
+      });
+    });
   });
 });
 
@@ -45,24 +66,3 @@ app.get('*', (req, res) => {
 app.listen(3000, () => {
   
 });
-
-const address = process.argv[2];
-
-if(!address) {
-  console.log('Please provide a location.');
-} else {
-  geocode(address, (error, {latitude, longitude, location} = {}) => {
-    if (error) {
-      return console.log(error)
-    } else {
-      forecast(latitude, longitude, (error, forecastData) => {
-        if (error) {
-          return console.log('Error:', error);
-        } else {
-          console.log(location);
-          console.log(forecastData);
-        }
-      });
-    }
-  });
-}

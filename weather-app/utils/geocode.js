@@ -11,8 +11,8 @@ const geocode = (address, callback) => {
   request({url: url, json: true}, (error, { body }) => {
     if (error) {
       callback('Unable to connect to location services', undefined);
-    } else if (body.message) {
-      callback(`Error: ${body.message}`, undefined)
+    } else if (body.features.length === 0) {
+      callback('Error: Cannot find location', undefined)
     } else {
       callback(undefined, {
         latitude: body.features[0].center[1],

@@ -14,9 +14,7 @@ const forecast = (lat, lon, callback) => {
       callback(`Error: ${body.error.info}`, undefined);
     } else {
       const data = body.current;
-      callback(undefined, `\n${data.weather_descriptions[0]}.
-                            \nThe temperature is ${data.temperature} degrees.
-                            \nThere is ${data.precip}% chance of precipitations.`);
+      callback(undefined, `${data.weather_descriptions[0]}. The temperature is ${data.temperature} degrees. There is ${data.precip}% chance of precipitations.`);
     }
   });
 };
