@@ -19,6 +19,4 @@ const forecast = (lat, lon, callback) => {
   });
 };
 
-
-
 export default forecast;

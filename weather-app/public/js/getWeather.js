@@ -18,7 +18,6 @@ search.addEventListener('click', (e) => {
         card.style.opacity = '100%'
         cardHeader.innerHTML = `${data.location}`;
         cardText.innerHTML = `${data.forecast}`;
-        console.log(data.forecast);
       }
     });
   });
